@@ -1,0 +1,27 @@
+html {
+    font-size: 20px;
+    text-align:center;
+    position:relative;
+}
+
+.board {
+    display: grid;
+    width: 60vh;
+    height: 60vh;
+    margin: auto;
+    background-color: hsl(87, 100%, 95%);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.board div {
+    position: relative;
+}
+
+.board div p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+}
