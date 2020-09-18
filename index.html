@@ -8,7 +8,29 @@
     </head>
     <body>
         <h1>Tic-Tac-Toe</h1>
-        <div class = "board"></div>
+        
+        <div class = "content">
+            <div class = "sideBox" id="scoreBoard">
+                <h2>Scoreboard:</h2>
+                <div class = "pointWrapper">
+                    <p>Player X: </p>
+                    <p id = "pXPoints">0</p>
+                </div>
+                <div class = "pointWrapper">
+                    <p>Player O: </p>
+                    <p id = "pOPoints">0</p>
+                </div>
+                <button id="reset">Reset Scores</button>
+            </div>
+
+            <div class = "board"></div>
+
+            <div class = "sideBox" id="moveBoard">
+                <h2 id = "move">to move</h2>
+                <button id="clear">Clear Board</button>
+            </div>
+        </div>
+        
         <p id = "winMessage"></p>
     </body>
     <script src = "scripts.js"></script>

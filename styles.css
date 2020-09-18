@@ -1,17 +1,37 @@
 html {
-    font-size: 20px;
     text-align:center;
     position:relative;
+}
+
+h1 {
+    padding: 20px 0px;
+    font-size: 50px;  
+}
+
+button {
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 10px;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+}
+
+.content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
 }
 
 .board {
     display: grid;
     width: 60vh;
     height: 60vh;
-    margin: auto;
     background-color: hsl(87, 100%, 95%);
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    background-image: url("tttbackground.png");
+    background-size: cover;
 }
 
 .board div {
@@ -23,5 +43,35 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 100px;
+    font-size: 120px;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+.sideBox {
+    position: relative;
+    display: block;
+    background-color: rgba(194, 194, 194, 0.1);
+    padding: 20px;
+    
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+.sideBox h2 {
+    font-size: 50px;
+}
+
+.sideBox p {
+    font-size: 30px;
+}
+
+.pointWrapper p{
+    display: inline;
+}
+
+#winMessage {
+    font-size:100px;
+    padding: 20px;
 }
