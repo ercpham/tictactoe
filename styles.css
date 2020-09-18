@@ -36,6 +36,7 @@ button {
 
 .board div {
     position: relative;
+    transition: 1s;
 }
 
 .board div p{
@@ -59,6 +60,10 @@ button {
     border-color: black;
 }
 
+.clearMessage {
+    font-size: 30px !important
+}
+
 .sideBox h2 {
     font-size: 50px;
 }
@@ -71,7 +76,16 @@ button {
     display: inline;
 }
 
+.faded {
+    color: rgba(0,0,0,0.3);
+}
+
 #winMessage {
     font-size:100px;
     padding: 20px;
 }
+
+#moveBoard {
+    width: 250px;
+}
+

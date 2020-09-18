@@ -77,6 +77,8 @@ const displayController = (() => {
             const div = document.createElement("div");
             div.id=index;
             div.addEventListener("click", mark);
+            div.addEventListener("mouseover", preview);
+            div.addEventListener("mouseout", unview);
             const p = document.createElement("p");
             if (item != null)
                 p.textContent = item;
@@ -93,6 +95,8 @@ const displayController = (() => {
             gameBoard.setPosition(i, null);
         };
         document.getElementById("winMessage").textContent = "";
+        document.getElementById("move").classList.remove("clearMessage");
+        setToMove();
     }
 
     const toggleCurrentCharacter = () => player.getName() === 'O' ? player = playerX : player = playerO;
@@ -105,8 +109,12 @@ const displayController = (() => {
             updateScoreBoard();
         }
         else {
-            document.getElementById("winMessage").textContent = `Draw!`
+            document.getElementById("winMessage").textContent = `Draw!`;
         }
+
+        console.log("here");
+        document.getElementById("move").textContent = "Clear board to restart game.";
+        document.getElementById("move").classList.add("clearMessage");
     }
 
     const resetScores = () => {
@@ -125,14 +133,32 @@ const displayController = (() => {
     }
 
     function mark() {
-        if (!gameBoard.getGameEnd() && this.firstChild.textContent == "") {
+        if (!gameBoard.getGameEnd() && (this.firstChild.textContent == "" || this.firstChild.classList.contains("faded"))) {
             this.firstChild.textContent = player.getName();
+            if (this.firstChild.classList.contains("faded"))
+                this.firstChild.classList.remove("faded");
             gameBoard.setPosition(this.id, player);
             gameBoard.checkWin(this.id, player);
             displayController.toggleCurrentCharacter();
-            setToMove();
+            if (!gameBoard.getGameEnd())
+                setToMove();
         }
     }
+
+    function preview() {
+        if (this.firstChild.textContent === "" && !gameBoard.getGameEnd()) {
+            this.firstChild.textContent = player.getName();
+            this.firstChild.classList.add("faded");
+        }
+    }
+
+    function unview() {
+        if (this.firstChild.classList.contains("faded")) {
+            this.firstChild.textContent = "";
+            this.firstChild.classList.remove("faded");
+        }
+    }
+
     return {populateBoard, clearBoard, toggleCurrentCharacter, setPlayers, win, updateScoreBoard, resetScores};
 })();
 
